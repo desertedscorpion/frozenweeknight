@@ -1,5 +1,5 @@
 FROM taf7lwappqystqp4u7wjsqkdc7dquw/easternmoose
-ENV GIT_HOST="github.com" GIT_USER="git" GIT_URL="github.com:desertedscorpion:frozenweekend.git"
+ENV GIT_HOST="github.com" GIT_USER="git" GIT_URL="github.com:desertedscorpion:frozenweekend.git" PARENT_BRANCH=master DESCRIPTION="blah"
 VOLUME /var/private
 VOLUME /var/workspace
 COPY frozenweeknight.sh /usr/local/sbin/frozenweeknight.sh

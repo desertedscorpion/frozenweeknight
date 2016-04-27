@@ -31,9 +31,11 @@ EOF
 	git -C /var/workspace remote add origin ${GIT_URL}
     fi &&
     if [ -z "$(git -C /var/workspace branch)" ]
-    then	
-	git -C /var/workspace fetch origin master &&
-	    git -C /var/workspace checkout master &&
+    then
+	CHILD_BRANCH=scratch$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w  | head -n 1)$(echo ${DESCRIPTION} | sed -e "s# #_#"\g)
+	git -C /var/workspace fetch origin ${PARENT_BRANCH} &&
+	    git -C /var/workspace checkout ${PARENT_BRANCH} &&
+	    git -C /var/workspace checkout -b ${CHILD_BRANCH} &&
 	    true
     fi &&
     if [ ! -f /var/workspace/.git/hooks/pre-commit ]
