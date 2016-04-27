@@ -28,7 +28,7 @@ EOF
     fi &&
     if [ -z "$(git -C /var/workspace remote)" ]
     then
-	git -C /var/workspace remote add ${GIT_URL}
+	git -C /var/workspace remote add origin ${GIT_URL}
     fi &&
     if [ -z "$(git -C /var/workspace branch)" ]
     then	
