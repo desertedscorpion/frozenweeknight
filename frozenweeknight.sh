@@ -32,7 +32,7 @@ EOF
     fi &&
     if [ -z "$(git -C /var/workspace branch)" ]
     then
-	CHILD_BRANCH=scratch$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w  | head -n 1)$(echo ${DESCRIPTION} | sed -e "s# #_#"\g)
+	CHILD_BRANCH=scratch$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 16 | head -n 1)$(echo ${DESCRIPTION} | sed -e "s# #_#"\g)
 	git -C /var/workspace fetch origin ${PARENT_BRANCH} &&
 	    git -C /var/workspace checkout ${PARENT_BRANCH} &&
 	    git -C /var/workspace checkout -b ${CHILD_BRANCH} &&
