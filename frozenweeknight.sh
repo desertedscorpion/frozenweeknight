@@ -36,4 +36,10 @@ EOF
 	    git -C /var/workspace checkout master &&
 	    true
     fi &&
+    if [ ! -f /var/workspace/.git/hooks/pre-commit ]
+    then
+	cp /usr/local/sbin/pre-commit.sh /var/workspace/.git/hooks/pre-commit &&
+	    chmod 0500 /var/workspace/.git/hooks/pre-commit &&
+	    true
+    fi &&
     true
